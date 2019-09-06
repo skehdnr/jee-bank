@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import com.bank.web.command.Receiver;
 import com.bank.web.daos.MemberDAO;
 import com.bank.web.daosimpls.MemberDAOImpl;
 import com.bank.web.domains.CustomerBean;
@@ -99,6 +100,15 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public CustomerBean login(CustomerBean param) {
+		MemberBean member = new MemberBean();
+		
+//		if(param.getId().equals(member.getId())
+//				&&param.getPass().equals(member.getPass())) {
+//			  
+//		}else {
+//			  Receiver.cmd.setPage("login");
+//		}
+	
 		return dao.login(param);
 	}
 	
