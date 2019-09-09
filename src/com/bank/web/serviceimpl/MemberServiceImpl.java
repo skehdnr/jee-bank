@@ -100,15 +100,6 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public CustomerBean login(CustomerBean param) {
-		MemberBean member = new MemberBean();
-		
-//		if(param.getId().equals(member.getId())
-//				&&param.getPass().equals(member.getPass())) {
-//			  
-//		}else {
-//			  Receiver.cmd.setPage("login");
-//		}
-	
 		return dao.login(param);
 	}
 	

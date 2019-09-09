@@ -26,56 +26,10 @@ import com.bank.web.serviceimpl.MemberServiceImpl;
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	protected void service(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		MemberService service = new MemberServiceImpl();
-		CustomerBean param = new CustomerBean();
-		Receiver.inin(request);
+		Receiver.init(request);
 		Receiver.cmd.execute();
-		if(Receiver.cmd.getAction()==null) {
-			Receiver.cmd.setPage();
-		}
-		switch(Receiver.cmd.getAction()) {
-		case "join" :
-			String id = request.getParameter("id");
-			String pass = request.getParameter("pass");
-			String ssn = request.getParameter("ssn");
-			String name = request.getParameter("name");
-			String credit = request.getParameter("credit");
-			System.out.println("도착해ㅐㅐ음"+id+pass+ssn+name+credit);
-			param.setCredit(credit);
-			param.setId(id);
-			param.setName(name);
-			param.setPass(pass);
-			param.setSsn(ssn);
-			System.out.println("회원정보"+param.toString());
-			
-			service.join(param);
-			Receiver.cmd.setPage("login");
-			break;
-		case "login": 
-			id = request.getParameter("id");
-			pass = request.getParameter("pass");
-			param.setId(id);
-			param.setPass(pass);
-			CustomerBean cust =  service.login(param);
-			if(cust == null) {
-				System.out.println("성공");
-                Receiver.cmd.setPage("login");
-             }else {
-            	 System.out.println("실패");
-                Receiver.cmd.setPage("mypage");
-             }
-			request.setAttribute("customer",cust);
-			break;
-		case "existID" :
-			break;
-		}
 		Sender.forward(request,  response);
 	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
-		doGet(request, response);
-	}
-
 }

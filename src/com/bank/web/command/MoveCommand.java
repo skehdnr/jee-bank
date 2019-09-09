@@ -7,6 +7,7 @@ public class MoveCommand extends  Command{
       setRequest(request);
       setDomain(domain);
       setAction((request.getParameter("action")==null)?"move": request.getParameter("action"));
+      System.out.println("무브커멘드");
       execute();
    }
    @Override

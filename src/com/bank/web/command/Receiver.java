@@ -5,12 +5,11 @@ import javax.servlet.http.HttpServletRequest;
 public class Receiver {
 	
 	public static Command cmd = new Command();
-	public static void inin(HttpServletRequest  request) {
-		try {
-			cmd = new MoveCommand(request);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	
+	
+	public static void init(HttpServletRequest request) {
+		cmd = Commander.order(request);
+		System.out.println("리시버");
 	}
 
 }

@@ -15,8 +15,8 @@ public class Command implements Order{
 	   this.view =  String.format(Constants.VIEW_PATH,  domain, page);     
    }
    public void setDomain() {
-		String path = request.getServletPath();
-		System.out.println("서블릿 패스가 뭘까 : "+path);
+		String path = request.getServletPath(); //customer.do
+		System.out.println("커맨드 : "+path);
 		domain = path.replace(".do","");
 		domain = domain.substring(1);
 	}
